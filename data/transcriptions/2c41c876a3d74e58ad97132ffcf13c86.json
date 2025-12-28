@@ -1,0 +1,1054 @@
+{
+  "id": "2c41c876a3d74e58ad97132ffcf13c86",
+  "created_at": "2025-12-28T19:00:13.295808+00:00",
+  "original_filename": "Speaker_0000_00000.wav",
+  "transcript_text": "hello everyone this is for made you wake up and welcomed today's session on auditorium so let's not waste any time and let's move forward and look at today's agenda will begin the session by first understanding why do we need analytics and what exactly is business analytics on why do we prefer are or the other boots in the industry offer that will begin by deep dying into our by understanding the basic fundamental concepts like variables and are due to operators data types and flow control finally to what the lead to helpful to session will try to understand how you can block the types of grass in ah to are we deal with today's agenda okay so have got a confirmation from eric shoe bomb dave rationing guy three reach mob bunker it's okay it's great to see that all if you guys are falling so i hope you guys are excited for the session as i am so let's not waste any more time and let's move forward looking",
+  "transcript_path": "C:\\Users\\Arpan\\Documents\\Innovations\\NoAI Translation\\data\\transcriptions\\2c41c876a3d74e58ad97132ffcf13c86.txt",
+  "source_audio_path": null,
+  "tts_audio_path": "C:\\Users\\Arpan\\Documents\\Innovations\\NoAI Translation\\data\\tts\\e7c04c598cf746dfb38fc5e00fcccc9c.wav",
+  "metadata": {
+    "recognizer": {
+      "result": [
+        {
+          "conf": 1.0,
+          "end": 0.39,
+          "start": 0.09,
+          "word": "hello"
+        },
+        {
+          "conf": 1.0,
+          "end": 0.96,
+          "start": 0.39,
+          "word": "everyone"
+        },
+        {
+          "conf": 0.979005,
+          "end": 1.328336,
+          "start": 1.177782,
+          "word": "this"
+        },
+        {
+          "conf": 0.5077,
+          "end": 1.47,
+          "start": 1.328336,
+          "word": "is"
+        },
+        {
+          "conf": 0.425246,
+          "end": 1.92,
+          "start": 1.759238,
+          "word": "for"
+        },
+        {
+          "conf": 0.550496,
+          "end": 2.12174,
+          "start": 1.933651,
+          "word": "made"
+        },
+        {
+          "conf": 0.829647,
+          "end": 2.223496,
+          "start": 2.12174,
+          "word": "you"
+        },
+        {
+          "conf": 0.69605,
+          "end": 2.49,
+          "start": 2.223496,
+          "word": "wake"
+        },
+        {
+          "conf": 0.69605,
+          "end": 2.64,
+          "start": 2.49,
+          "word": "up"
+        },
+        {
+          "conf": 1.0,
+          "end": 3.0,
+          "start": 2.660882,
+          "word": "and"
+        },
+        {
+          "conf": 0.447696,
+          "end": 3.51,
+          "start": 3.09,
+          "word": "welcomed"
+        },
+        {
+          "conf": 1.0,
+          "end": 3.87,
+          "start": 3.54,
+          "word": "today's"
+        },
+        {
+          "conf": 1.0,
+          "end": 4.26,
+          "start": 3.87,
+          "word": "session"
+        },
+        {
+          "conf": 1.0,
+          "end": 4.47,
+          "start": 4.29,
+          "word": "on"
+        },
+        {
+          "conf": 0.540489,
+          "end": 5.25,
+          "start": 4.5,
+          "word": "auditorium"
+        },
+        {
+          "conf": 1.0,
+          "end": 5.94,
+          "start": 5.76,
+          "word": "so"
+        },
+        {
+          "conf": 1.0,
+          "end": 6.18,
+          "start": 5.94,
+          "word": "let's"
+        },
+        {
+          "conf": 1.0,
+          "end": 6.45,
+          "start": 6.18,
+          "word": "not"
+        },
+        {
+          "conf": 1.0,
+          "end": 6.75,
+          "start": 6.45,
+          "word": "waste"
+        },
+        {
+          "conf": 1.0,
+          "end": 6.96,
+          "start": 6.75,
+          "word": "any"
+        },
+        {
+          "conf": 1.0,
+          "end": 7.35,
+          "start": 6.96,
+          "word": "time"
+        },
+        {
+          "conf": 1.0,
+          "end": 7.53,
+          "start": 7.35,
+          "word": "and"
+        },
+        {
+          "conf": 1.0,
+          "end": 7.77,
+          "start": 7.53,
+          "word": "let's"
+        },
+        {
+          "conf": 1.0,
+          "end": 8.04,
+          "start": 7.8,
+          "word": "move"
+        },
+        {
+          "conf": 1.0,
+          "end": 8.37,
+          "start": 8.04,
+          "word": "forward"
+        },
+        {
+          "conf": 0.797517,
+          "end": 8.455238,
+          "start": 8.37,
+          "word": "and"
+        },
+        {
+          "conf": 0.906207,
+          "end": 8.61,
+          "start": 8.455238,
+          "word": "look"
+        },
+        {
+          "conf": 0.906207,
+          "end": 8.7,
+          "start": 8.61,
+          "word": "at"
+        },
+        {
+          "conf": 0.906207,
+          "end": 9.03,
+          "start": 8.7,
+          "word": "today's"
+        },
+        {
+          "conf": 1.0,
+          "end": 9.63,
+          "start": 9.06,
+          "word": "agenda"
+        },
+        {
+          "conf": 1.0,
+          "end": 11.76,
+          "start": 11.52,
+          "word": "will"
+        },
+        {
+          "conf": 1.0,
+          "end": 12.0323,
+          "start": 11.76,
+          "word": "begin"
+        },
+        {
+          "conf": 0.746018,
+          "end": 12.15,
+          "start": 12.0323,
+          "word": "the"
+        },
+        {
+          "conf": 1.0,
+          "end": 12.57,
+          "start": 12.15,
+          "word": "session"
+        },
+        {
+          "conf": 1.0,
+          "end": 12.75,
+          "start": 12.57,
+          "word": "by"
+        },
+        {
+          "conf": 1.0,
+          "end": 13.14,
+          "start": 12.75,
+          "word": "first"
+        },
+        {
+          "conf": 1.0,
+          "end": 13.77,
+          "start": 13.14,
+          "word": "understanding"
+        },
+        {
+          "conf": 1.0,
+          "end": 14.04,
+          "start": 13.77,
+          "word": "why"
+        },
+        {
+          "conf": 1.0,
+          "end": 14.16,
+          "start": 14.04,
+          "word": "do"
+        },
+        {
+          "conf": 1.0,
+          "end": 14.25,
+          "start": 14.16,
+          "word": "we"
+        },
+        {
+          "conf": 1.0,
+          "end": 14.52,
+          "start": 14.25,
+          "word": "need"
+        },
+        {
+          "conf": 1.0,
+          "end": 15.21,
+          "start": 14.52,
+          "word": "analytics"
+        },
+        {
+          "conf": 1.0,
+          "end": 15.51,
+          "start": 15.21,
+          "word": "and"
+        },
+        {
+          "conf": 1.0,
+          "end": 15.84,
+          "start": 15.54,
+          "word": "what"
+        },
+        {
+          "conf": 1.0,
+          "end": 16.53,
+          "start": 15.87,
+          "word": "exactly"
+        },
+        {
+          "conf": 1.0,
+          "end": 16.8,
+          "start": 16.56,
+          "word": "is"
+        },
+        {
+          "conf": 1.0,
+          "end": 17.22,
+          "start": 16.8,
+          "word": "business"
+        },
+        {
+          "conf": 1.0,
+          "end": 17.76,
+          "start": 17.22,
+          "word": "analytics"
+        },
+        {
+          "conf": 0.909788,
+          "end": 18.06,
+          "start": 17.76,
+          "word": "on"
+        },
+        {
+          "conf": 1.0,
+          "end": 18.48,
+          "start": 18.18,
+          "word": "why"
+        },
+        {
+          "conf": 1.0,
+          "end": 18.63,
+          "start": 18.48,
+          "word": "do"
+        },
+        {
+          "conf": 1.0,
+          "end": 18.72,
+          "start": 18.63,
+          "word": "we"
+        },
+        {
+          "conf": 1.0,
+          "end": 19.08,
+          "start": 18.72,
+          "word": "prefer"
+        },
+        {
+          "conf": 0.466586,
+          "end": 19.38,
+          "start": 19.08,
+          "word": "are"
+        },
+        {
+          "conf": 1.0,
+          "end": 19.65,
+          "start": 19.44,
+          "word": "or"
+        },
+        {
+          "conf": 1.0,
+          "end": 19.77,
+          "start": 19.65,
+          "word": "the"
+        },
+        {
+          "conf": 1.0,
+          "end": 20.01,
+          "start": 19.77,
+          "word": "other"
+        },
+        {
+          "conf": 0.865607,
+          "end": 20.31,
+          "start": 20.01,
+          "word": "boots"
+        },
+        {
+          "conf": 1.0,
+          "end": 20.46,
+          "start": 20.31,
+          "word": "in"
+        },
+        {
+          "conf": 1.0,
+          "end": 20.61,
+          "start": 20.46,
+          "word": "the"
+        },
+        {
+          "conf": 1.0,
+          "end": 21.03,
+          "start": 20.61,
+          "word": "industry"
+        },
+        {
+          "conf": 0.653676,
+          "end": 22.289998,
+          "start": 21.959998,
+          "word": "offer"
+        },
+        {
+          "conf": 1.0,
+          "end": 22.56,
+          "start": 22.29,
+          "word": "that"
+        },
+        {
+          "conf": 0.865966,
+          "end": 22.77,
+          "start": 22.56,
+          "word": "will"
+        },
+        {
+          "conf": 1.0,
+          "end": 23.1,
+          "start": 22.77,
+          "word": "begin"
+        },
+        {
+          "conf": 1.0,
+          "end": 23.28,
+          "start": 23.1,
+          "word": "by"
+        },
+        {
+          "conf": 1.0,
+          "end": 23.52,
+          "start": 23.28,
+          "word": "deep"
+        },
+        {
+          "conf": 0.584552,
+          "end": 23.91,
+          "start": 23.52,
+          "word": "dying"
+        },
+        {
+          "conf": 1.0,
+          "end": 24.15,
+          "start": 23.91,
+          "word": "into"
+        },
+        {
+          "conf": 0.843833,
+          "end": 24.57,
+          "start": 24.15,
+          "word": "our"
+        },
+        {
+          "conf": 1.0,
+          "end": 24.87,
+          "start": 24.63,
+          "word": "by"
+        },
+        {
+          "conf": 1.0,
+          "end": 25.59,
+          "start": 24.93,
+          "word": "understanding"
+        },
+        {
+          "conf": 1.0,
+          "end": 25.71,
+          "start": 25.59,
+          "word": "the"
+        },
+        {
+          "conf": 1.0,
+          "end": 26.13,
+          "start": 25.71,
+          "word": "basic"
+        },
+        {
+          "conf": 1.0,
+          "end": 26.7,
+          "start": 26.13,
+          "word": "fundamental"
+        },
+        {
+          "conf": 1.0,
+          "end": 27.3,
+          "start": 26.73,
+          "word": "concepts"
+        },
+        {
+          "conf": 1.0,
+          "end": 27.99,
+          "start": 27.69,
+          "word": "like"
+        },
+        {
+          "conf": 0.950962,
+          "end": 28.53,
+          "start": 27.99,
+          "word": "variables"
+        },
+        {
+          "conf": 0.604339,
+          "end": 28.650002,
+          "start": 28.530002,
+          "word": "and"
+        },
+        {
+          "conf": 0.521788,
+          "end": 28.890002,
+          "start": 28.650002,
+          "word": "are"
+        },
+        {
+          "conf": 0.733009,
+          "end": 29.066237,
+          "start": 28.92,
+          "word": "due"
+        },
+        {
+          "conf": 0.916953,
+          "end": 29.212474,
+          "start": 29.066237,
+          "word": "to"
+        },
+        {
+          "conf": 1.0,
+          "end": 30.0,
+          "start": 29.22,
+          "word": "operators"
+        },
+        {
+          "conf": 1.0,
+          "end": 30.33,
+          "start": 30.0,
+          "word": "data"
+        },
+        {
+          "conf": 1.0,
+          "end": 30.81,
+          "start": 30.33,
+          "word": "types"
+        },
+        {
+          "conf": 1.0,
+          "end": 31.08,
+          "start": 30.81,
+          "word": "and"
+        },
+        {
+          "conf": 1.0,
+          "end": 31.32,
+          "start": 31.08,
+          "word": "flow"
+        },
+        {
+          "conf": 1.0,
+          "end": 31.71,
+          "start": 31.32,
+          "word": "control"
+        },
+        {
+          "conf": 1.0,
+          "end": 32.94,
+          "start": 32.46,
+          "word": "finally"
+        },
+        {
+          "conf": 0.647207,
+          "end": 33.12,
+          "start": 32.94,
+          "word": "to"
+        },
+        {
+          "conf": 0.647207,
+          "end": 33.33,
+          "start": 33.12,
+          "word": "what"
+        },
+        {
+          "conf": 1.0,
+          "end": 33.48,
+          "start": 33.36,
+          "word": "the"
+        },
+        {
+          "conf": 1.0,
+          "end": 33.69,
+          "start": 33.48,
+          "word": "lead"
+        },
+        {
+          "conf": 1.0,
+          "end": 33.75,
+          "start": 33.69,
+          "word": "to"
+        },
+        {
+          "conf": 1.0,
+          "end": 34.077693,
+          "start": 33.75,
+          "word": "helpful"
+        },
+        {
+          "conf": 0.923092,
+          "end": 34.2,
+          "start": 34.08,
+          "word": "to"
+        },
+        {
+          "conf": 0.923092,
+          "end": 34.65,
+          "start": 34.2,
+          "word": "session"
+        },
+        {
+          "conf": 1.0,
+          "end": 34.86,
+          "start": 34.65,
+          "word": "will"
+        },
+        {
+          "conf": 1.0,
+          "end": 35.04,
+          "start": 34.86,
+          "word": "try"
+        },
+        {
+          "conf": 1.0,
+          "end": 35.16,
+          "start": 35.04,
+          "word": "to"
+        },
+        {
+          "conf": 1.0,
+          "end": 35.64,
+          "start": 35.16,
+          "word": "understand"
+        },
+        {
+          "conf": 1.0,
+          "end": 35.85,
+          "start": 35.64,
+          "word": "how"
+        },
+        {
+          "conf": 1.0,
+          "end": 35.97,
+          "start": 35.85,
+          "word": "you"
+        },
+        {
+          "conf": 1.0,
+          "end": 36.21,
+          "start": 35.97,
+          "word": "can"
+        },
+        {
+          "conf": 0.951195,
+          "end": 36.57,
+          "start": 36.24,
+          "word": "block"
+        },
+        {
+          "conf": 0.575657,
+          "end": 36.711449,
+          "start": 36.6,
+          "word": "the"
+        },
+        {
+          "conf": 1.0,
+          "end": 37.35,
+          "start": 37.058467,
+          "word": "types"
+        },
+        {
+          "conf": 1.0,
+          "end": 37.47,
+          "start": 37.35,
+          "word": "of"
+        },
+        {
+          "conf": 1.0,
+          "end": 37.98,
+          "start": 37.47,
+          "word": "grass"
+        },
+        {
+          "conf": 1.0,
+          "end": 38.25,
+          "start": 38.04,
+          "word": "in"
+        },
+        {
+          "conf": 0.595358,
+          "end": 38.55,
+          "start": 38.28,
+          "word": "ah"
+        },
+        {
+          "conf": 0.736307,
+          "end": 39.45,
+          "start": 39.18,
+          "word": "to"
+        },
+        {
+          "conf": 0.410792,
+          "end": 39.599484,
+          "start": 39.48,
+          "word": "are"
+        },
+        {
+          "conf": 0.831166,
+          "end": 39.72,
+          "start": 39.599484,
+          "word": "we"
+        },
+        {
+          "conf": 0.831166,
+          "end": 39.9,
+          "start": 39.72,
+          "word": "deal"
+        },
+        {
+          "conf": 0.831166,
+          "end": 40.02,
+          "start": 39.9,
+          "word": "with"
+        },
+        {
+          "conf": 1.0,
+          "end": 40.32,
+          "start": 40.02,
+          "word": "today's"
+        },
+        {
+          "conf": 1.0,
+          "end": 40.83,
+          "start": 40.32,
+          "word": "agenda"
+        },
+        {
+          "conf": 1.0,
+          "end": 43.53,
+          "start": 43.14,
+          "word": "okay"
+        },
+        {
+          "conf": 1.0,
+          "end": 43.74,
+          "start": 43.53,
+          "word": "so"
+        },
+        {
+          "conf": 1.0,
+          "end": 43.89,
+          "start": 43.74,
+          "word": "have"
+        },
+        {
+          "conf": 1.0,
+          "end": 44.095898,
+          "start": 43.89,
+          "word": "got"
+        },
+        {
+          "conf": 0.863272,
+          "end": 44.13,
+          "start": 44.1,
+          "word": "a"
+        },
+        {
+          "conf": 1.0,
+          "end": 44.85,
+          "start": 44.13,
+          "word": "confirmation"
+        },
+        {
+          "conf": 1.0,
+          "end": 45.12,
+          "start": 44.85,
+          "word": "from"
+        },
+        {
+          "conf": 0.79037,
+          "end": 45.6,
+          "start": 45.15,
+          "word": "eric"
+        },
+        {
+          "conf": 1.0,
+          "end": 45.87,
+          "start": 45.63,
+          "word": "shoe"
+        },
+        {
+          "conf": 1.0,
+          "end": 46.32,
+          "start": 45.87,
+          "word": "bomb"
+        },
+        {
+          "conf": 1.0,
+          "end": 46.95,
+          "start": 46.35,
+          "word": "dave"
+        },
+        {
+          "conf": 0.475958,
+          "end": 47.73,
+          "start": 46.95,
+          "word": "rationing"
+        },
+        {
+          "conf": 0.66834,
+          "end": 48.056283,
+          "start": 47.759996,
+          "word": "guy"
+        },
+        {
+          "conf": 1.0,
+          "end": 48.54,
+          "start": 48.140237,
+          "word": "three"
+        },
+        {
+          "conf": 1.0,
+          "end": 49.08,
+          "start": 48.78,
+          "word": "reach"
+        },
+        {
+          "conf": 0.727415,
+          "end": 49.56,
+          "start": 49.080004,
+          "word": "mob"
+        },
+        {
+          "conf": 0.520761,
+          "end": 50.01,
+          "start": 49.56,
+          "word": "bunker"
+        },
+        {
+          "conf": 0.520761,
+          "end": 50.19,
+          "start": 50.01,
+          "word": "it's"
+        },
+        {
+          "conf": 1.0,
+          "end": 50.49,
+          "start": 50.25,
+          "word": "okay"
+        },
+        {
+          "conf": 1.0,
+          "end": 50.61,
+          "start": 50.49,
+          "word": "it's"
+        },
+        {
+          "conf": 1.0,
+          "end": 50.85,
+          "start": 50.61,
+          "word": "great"
+        },
+        {
+          "conf": 1.0,
+          "end": 50.94,
+          "start": 50.85,
+          "word": "to"
+        },
+        {
+          "conf": 1.0,
+          "end": 51.12,
+          "start": 50.94,
+          "word": "see"
+        },
+        {
+          "conf": 1.0,
+          "end": 51.3,
+          "start": 51.12,
+          "word": "that"
+        },
+        {
+          "conf": 1.0,
+          "end": 51.48,
+          "start": 51.3,
+          "word": "all"
+        },
+        {
+          "conf": 1.0,
+          "end": 51.6,
+          "start": 51.48,
+          "word": "if"
+        },
+        {
+          "conf": 1.0,
+          "end": 51.69,
+          "start": 51.6,
+          "word": "you"
+        },
+        {
+          "conf": 1.0,
+          "end": 51.93,
+          "start": 51.69,
+          "word": "guys"
+        },
+        {
+          "conf": 1.0,
+          "end": 52.02,
+          "start": 51.93,
+          "word": "are"
+        },
+        {
+          "conf": 0.840655,
+          "end": 52.44,
+          "start": 52.02,
+          "word": "falling"
+        },
+        {
+          "conf": 1.0,
+          "end": 53.25,
+          "start": 52.77,
+          "word": "so"
+        },
+        {
+          "conf": 1.0,
+          "end": 53.58,
+          "start": 53.4,
+          "word": "i"
+        },
+        {
+          "conf": 1.0,
+          "end": 53.79,
+          "start": 53.58,
+          "word": "hope"
+        },
+        {
+          "conf": 1.0,
+          "end": 53.91,
+          "start": 53.79,
+          "word": "you"
+        },
+        {
+          "conf": 1.0,
+          "end": 54.12,
+          "start": 53.91,
+          "word": "guys"
+        },
+        {
+          "conf": 1.0,
+          "end": 54.21,
+          "start": 54.12,
+          "word": "are"
+        },
+        {
+          "conf": 1.0,
+          "end": 54.75,
+          "start": 54.21,
+          "word": "excited"
+        },
+        {
+          "conf": 1.0,
+          "end": 54.93,
+          "start": 54.75,
+          "word": "for"
+        },
+        {
+          "conf": 0.867374,
+          "end": 55.02,
+          "start": 54.93,
+          "word": "the"
+        },
+        {
+          "conf": 0.867374,
+          "end": 55.5,
+          "start": 55.02,
+          "word": "session"
+        },
+        {
+          "conf": 1.0,
+          "end": 55.74,
+          "start": 55.5,
+          "word": "as"
+        },
+        {
+          "conf": 1.0,
+          "end": 55.86,
+          "start": 55.74,
+          "word": "i"
+        },
+        {
+          "conf": 1.0,
+          "end": 56.1,
+          "start": 55.86,
+          "word": "am"
+        },
+        {
+          "conf": 1.0,
+          "end": 57.15,
+          "start": 56.88,
+          "word": "so"
+        },
+        {
+          "conf": 1.0,
+          "end": 57.39,
+          "start": 57.15,
+          "word": "let's"
+        },
+        {
+          "conf": 1.0,
+          "end": 57.66,
+          "start": 57.39,
+          "word": "not"
+        },
+        {
+          "conf": 1.0,
+          "end": 57.93,
+          "start": 57.66,
+          "word": "waste"
+        },
+        {
+          "conf": 1.0,
+          "end": 58.08,
+          "start": 57.93,
+          "word": "any"
+        },
+        {
+          "conf": 1.0,
+          "end": 58.273129,
+          "start": 58.08,
+          "word": "more"
+        },
+        {
+          "conf": 0.437635,
+          "end": 58.649996,
+          "start": 58.319996,
+          "word": "time"
+        },
+        {
+          "conf": 0.818171,
+          "end": 58.77,
+          "start": 58.65,
+          "word": "and"
+        },
+        {
+          "conf": 1.0,
+          "end": 58.98,
+          "start": 58.77,
+          "word": "let's"
+        },
+        {
+          "conf": 1.0,
+          "end": 59.28,
+          "start": 58.98,
+          "word": "move"
+        },
+        {
+          "conf": 1.0,
+          "end": 59.73,
+          "start": 59.28,
+          "word": "forward"
+        },
+        {
+          "conf": 0.797411,
+          "end": 60.03,
+          "start": 59.788477,
+          "word": "looking"
+        }
+      ],
+      "text": "hello everyone this is for made you wake up and welcomed today's session on auditorium so let's not waste any time and let's move forward and look at today's agenda will begin the session by first understanding why do we need analytics and what exactly is business analytics on why do we prefer are or the other boots in the industry offer that will begin by deep dying into our by understanding the basic fundamental concepts like variables and are due to operators data types and flow control finally to what the lead to helpful to session will try to understand how you can block the types of grass in ah to are we deal with today's agenda okay so have got a confirmation from eric shoe bomb dave rationing guy three reach mob bunker it's okay it's great to see that all if you guys are falling so i hope you guys are excited for the session as i am so let's not waste any more time and let's move forward looking"
+    }
+  }
+}
