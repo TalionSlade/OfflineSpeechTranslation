@@ -1,3 +1,6 @@
 /.venv
 /archive
 /models
+/data/transcriptions
+/data/tts
+/speech-trans-pvt-1-main/.venv

@@ -40,9 +40,9 @@ The service exposes:
 ```bash
 curl -X POST http://localhost:8000/v1/process \
   -F "file=@sample.wav" \
-  | jq
+  --output output.wav
 ```
-The response contains the transcription text and the synthesized speech as a base64 string alongside the MIME type.
+The response streams the synthesized speech as a WAV file; the generated transcription data is persisted under `data/transcriptions`.
 
 ## Configuration
 Environment variables:

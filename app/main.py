@@ -1,11 +1,11 @@
 from __future__ import annotations
 
-import base64
 import tempfile
 from pathlib import Path
 
 from fastapi import FastAPI, File, HTTPException, UploadFile, status
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 
 from .config import MAX_AUDIO_UPLOAD_BYTES
 from .services.transcription import transcribe_audio
@@ -29,7 +29,7 @@ def health_check() -> dict[str, str]:
 
 
 @app.post("/v1/process")
-async def process_audio(file: UploadFile = File(...)) -> dict[str, str]:
+async def process_audio(file: UploadFile = File(...)) -> FileResponse:
     if not file.filename:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Missing filename.")
 
@@ -53,8 +53,6 @@ async def process_audio(file: UploadFile = File(...)) -> dict[str, str]:
             tts_audio_path=tts_path,
             metadata={"recognizer": recognizer_payload},
         )
-        audio_bytes = tts_path.read_bytes()
-        audio_base64 = base64.b64encode(audio_bytes).decode("ascii")
     except FileNotFoundError as exc:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(exc))
     except ValueError as exc:
@@ -62,9 +60,10 @@ async def process_audio(file: UploadFile = File(...)) -> dict[str, str]:
     finally:
         temp_path.unlink(missing_ok=True)
 
-    return {
-        "transcription_id": record.id,
-        "transcript": transcript_text,
-        "audio_mime_type": "audio/wav",
-        "audio_base64": audio_base64,
-    }
+    # Expose the synthesized audio file directly so clients avoid manual base64 decoding.
+    return FileResponse(
+        path=tts_path,
+        media_type="audio/wav",
+        filename=f"{record.id}.wav",
+        headers={"X-Transcription-Id": record.id},
+    )
