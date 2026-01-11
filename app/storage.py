@@ -8,7 +8,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Optional
 
-from .config import TRANSCRIPTION_DIR
+from .config import TRANSCRIPTION_DIR, TRANSLATION_DIR
 
 
 @dataclass
@@ -20,6 +20,8 @@ class TranscriptionRecord:
     original_filename: str
     transcript_text: str
     transcript_path: str
+    translated_text: Optional[str] = None
+    translation_path: Optional[str] = None
     source_audio_path: Optional[str] = None
     tts_audio_path: Optional[str] = None
     metadata: Optional[Dict[str, Any]] = None
@@ -33,16 +35,25 @@ def save_transcription(
     transcript_text: str,
     original_filename: str,
     *,
+    record_id: str | None = None,
+    translation_text: Optional[str] = None,
     source_audio_path: Optional[Path] = None,
     tts_audio_path: Optional[Path] = None,
     metadata: Optional[Dict[str, Any]] = None,
 ) -> TranscriptionRecord:
     """Persist a transcription payload to disk as JSON."""
 
-    record_id = uuid.uuid4().hex
+    record_id = record_id or uuid.uuid4().hex
     created_at = datetime.now(timezone.utc).isoformat()
     transcript_path = TRANSCRIPTION_DIR / f"{record_id}.txt"
     transcript_path.write_text(transcript_text, encoding="utf-8")
+
+    translation_path: Optional[Path] = None
+    translated_cleaned: Optional[str] = None
+    if translation_text is not None:
+        translated_cleaned = (translation_text or "").strip()
+        translation_path = TRANSLATION_DIR / f"{record_id}.txt"
+        translation_path.write_text(translated_cleaned, encoding="utf-8")
 
     record = TranscriptionRecord(
         id=record_id,
@@ -50,6 +61,8 @@ def save_transcription(
         original_filename=original_filename,
         transcript_text=transcript_text,
         transcript_path=str(transcript_path.resolve()),
+        translated_text=translated_cleaned,
+        translation_path=str(translation_path.resolve()) if translation_path else None,
         source_audio_path=str(source_audio_path.resolve()) if source_audio_path else None,
         tts_audio_path=str(tts_audio_path.resolve()) if tts_audio_path else None,
         metadata=metadata or {},

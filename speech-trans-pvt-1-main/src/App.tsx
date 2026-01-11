@@ -57,6 +57,8 @@ function App() {
     try {
       const { blob, processingTime } = await translateAudio(
         selectedFile,
+        sourceLanguage,
+        targetLanguage,
         (prog) => setProgress(Math.round(prog))
       );
 

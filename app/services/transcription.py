@@ -3,6 +3,9 @@ from __future__ import annotations
 
 import contextlib
 import json
+import shutil
+import subprocess
+import tempfile
 import threading
 from pathlib import Path
 from typing import Dict, Tuple
@@ -60,20 +63,60 @@ def _resample(audio: np.ndarray, original_rate: int, target_rate: int) -> np.nda
 def _read_wav_pcm(path: Path) -> Tuple[int, bytes]:
     """Load a WAV file and return PCM data suitable for Vosk."""
 
-    with contextlib.closing(wave.open(str(path), "rb")) as waveform:  # type: ignore[name-defined]
-        sample_width = waveform.getsampwidth()
-        channels = waveform.getnchannels()
-        sample_rate = waveform.getframerate()
-        frames = waveform.getnframes()
-        if sample_width != 2:
-            raise ValueError("Only 16-bit PCM WAV files are supported.")
-        pcm_bytes = waveform.readframes(frames)
+    def read_from_wav(wav_path: Path) -> Tuple[int, bytes]:
+        with contextlib.closing(wave.open(str(wav_path), "rb")) as waveform:  # type: ignore[name-defined]
+            sample_width = waveform.getsampwidth()
+            channels = waveform.getnchannels()
+            sample_rate = waveform.getframerate()
+            frames = waveform.getnframes()
+            if sample_width != 2:
+                raise ValueError("Only 16-bit PCM WAV files are supported.")
+            pcm_bytes = waveform.readframes(frames)
 
-    audio = np.frombuffer(pcm_bytes, dtype=np.int16)
-    audio = _convert_to_mono(audio, channels)
-    audio = _resample(audio, sample_rate, TARGET_SAMPLE_RATE)
+        audio = np.frombuffer(pcm_bytes, dtype=np.int16)
+        audio = _convert_to_mono(audio, channels)
+        audio = _resample(audio, sample_rate, TARGET_SAMPLE_RATE)
 
-    return TARGET_SAMPLE_RATE, audio.tobytes()
+        return TARGET_SAMPLE_RATE, audio.tobytes()
+
+    try:
+        return read_from_wav(path)
+    except wave.Error:
+        # Not a RIFF/WAV (common with MediaRecorder output mislabeled as .wav), try ffmpeg conversion.
+        ffmpeg = shutil.which("ffmpeg")
+        if not ffmpeg:
+            raise ValueError(
+                "Unsupported audio container/codec. Install ffmpeg to enable automatic conversion "
+                "(required for browser-recorded audio/webm and formats like mp3/m4a/flac)."
+            )
+
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as temp_wav:
+            temp_wav_path = Path(temp_wav.name)
+
+        try:
+            command = [
+                ffmpeg,
+                "-y",
+                "-i",
+                str(path),
+                "-ac",
+                "1",
+                "-ar",
+                str(TARGET_SAMPLE_RATE),
+                "-f",
+                "wav",
+                "-acodec",
+                "pcm_s16le",
+                str(temp_wav_path),
+            ]
+            result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
+            if result.returncode != 0:
+                stderr = result.stderr.decode("utf-8", errors="ignore").strip()
+                raise ValueError(f"Audio conversion failed (ffmpeg): {stderr or 'unknown error'}")
+
+            return read_from_wav(temp_wav_path)
+        finally:
+            temp_wav_path.unlink(missing_ok=True)
 
 
 # Lazy import to avoid circular dependency in type checking

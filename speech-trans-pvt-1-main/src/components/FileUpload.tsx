@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { Upload, X, FileAudio } from 'lucide-react';
+import { Upload, X, FileAudio, Download } from 'lucide-react';
 
 interface FileUploadProps {
   onFileSelect: (file: File) => void;
@@ -11,6 +11,18 @@ interface FileUploadProps {
 export const FileUpload = ({ onFileSelect, selectedFile, onClear, disabled }: FileUploadProps) => {
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleDownloadSelected = () => {
+    if (!selectedFile) return;
+    const url = URL.createObjectURL(selectedFile);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = selectedFile.name || 'recording.wav';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
 
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
@@ -78,7 +90,7 @@ export const FileUpload = ({ onFileSelect, selectedFile, onClear, disabled }: Fi
           <input
             ref={fileInputRef}
             type="file"
-            accept=".wav,.mp3,.m4a,.flac,audio/wav,audio/mpeg,audio/mp4,audio/x-m4a,audio/flac"
+            accept=".wav,.mp3,.m4a,.flac,.webm,.ogg,audio/wav,audio/mpeg,audio/mp4,audio/x-m4a,audio/flac,audio/webm,audio/ogg"
             onChange={handleFileInput}
             className="hidden"
             disabled={disabled}
@@ -123,14 +135,25 @@ export const FileUpload = ({ onFileSelect, selectedFile, onClear, disabled }: Fi
               </div>
             </div>
 
-            <button
-              onClick={onClear}
-              disabled={disabled}
-              className="ml-4 p-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
-              aria-label="Remove file"
-            >
-              <X className="w-5 h-5" />
-            </button>
+            <div className="ml-4 flex items-center space-x-2 flex-shrink-0">
+              <button
+                onClick={handleDownloadSelected}
+                disabled={disabled}
+                className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-100 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                aria-label="Download source audio"
+              >
+                <Download className="w-5 h-5" />
+              </button>
+
+              <button
+                onClick={onClear}
+                disabled={disabled}
+                className="p-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                aria-label="Remove file"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
           </div>
         </div>
       )}

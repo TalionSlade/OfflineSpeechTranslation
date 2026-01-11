@@ -1,6 +1,7 @@
 """Text-to-speech helpers backed by Piper TTS."""
 from __future__ import annotations
 
+import json
 import os
 import shutil
 import subprocess
@@ -41,6 +42,8 @@ _LANGUAGE_ALIASES = {
 
 _PIPER_BASE = [shutil.which("piper")] if shutil.which("piper") else [sys.executable, "-m", "piper"]
 _ENGINE_LOCK = threading.Lock()
+
+_CONFIG_LOCK = threading.Lock()
 
 
 def _canonical_language(label: str | None) -> str:
@@ -88,6 +91,62 @@ def _guess_config_path(model_path: Path, explicit: str | None) -> Path | None:
         return generic
 
     return None
+
+
+def _sanitize_piper_config_in_place(config_path: Path) -> None:
+    """Sanitize Piper config JSON **in place** (creates a .bak backup once).
+
+    The installed `piper` CLI currently ignores `--config` and always loads
+    `<model>.onnx.json` (see `piper.__main__`). Therefore, if a voice package ships
+    with legacy values like `"phoneme_type": "PhonemeType.ESPEAK"`, we must fix
+    the file itself.
+    """
+
+    resolved = config_path.resolve()
+
+    with _CONFIG_LOCK:
+        try:
+            raw = resolved.read_text(encoding="utf-8")
+            payload = json.loads(raw)
+        except Exception:
+            return
+
+        if not isinstance(payload, dict):
+            return
+
+        phoneme_type = payload.get("phoneme_type")
+        if not isinstance(phoneme_type, str):
+            return
+
+        normalized = phoneme_type.strip()
+        lowered = normalized.lower()
+        if not lowered.startswith("phonemetype."):
+            return
+
+        tail = normalized.split(".", 1)[1].strip().lower()
+        if tail.startswith("espeak"):
+            rewritten = "espeak"
+        elif tail.startswith("text"):
+            rewritten = "text"
+        else:
+            # Unknown legacy value; leave as-is.
+            return
+
+        if rewritten == phoneme_type:
+            return
+
+        payload["phoneme_type"] = rewritten
+
+        backup_path = resolved.with_suffix(resolved.suffix + ".bak")
+        try:
+            if not backup_path.exists():
+                backup_path.write_text(raw, encoding="utf-8")
+            resolved.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+        except Exception as exc:
+            raise ValueError(
+                f"Piper voice config needs a one-time fix but could not be updated: {resolved}. "
+                f"Please edit phoneme_type to '{rewritten}' (or make the file writable)."
+            ) from exc
 
 
 def _search_directory(base_dir: Path, language: str, config_override: str | None) -> tuple[Path, Path | None] | None:
@@ -155,6 +214,9 @@ def _build_command(model_path: Path, config_path: Path | None, output_path: Path
     command = list(_PIPER_BASE)
     command.extend(["--model", str(model_path), "--output_file", str(output_path)])
     if config_path:
+        # Note: current Piper CLI ignores --config, but we keep it for forward compatibility
+        # and still sanitize the default config file in-place.
+        _sanitize_piper_config_in_place(config_path)
         command.extend(["--config", str(config_path)])
     if speaker is not None:
         command.extend(["--speaker", str(speaker)])
@@ -197,9 +259,50 @@ def synthesize_speech(
     if result.returncode != 0:
         stderr = result.stderr.decode("utf-8", errors="ignore")
         message = stderr.strip() or f"Exit code {result.returncode}"
-        raise RuntimeError(f"Piper synthesis failed: {message}")
+        hint = ""
+        lowered = message.lower()
+        if "onnxruntime" in lowered and ("dll load failed" in lowered or "pybind" in lowered):
+            hint = (
+                "\n\nHint: This looks like an ONNX Runtime DLL/provider issue on Windows. "
+                "Use `onnxruntime-directml` (already in requirements) and reinstall your deps in the same venv."
+            )
+        raise RuntimeError(f"Piper synthesis failed: {message}{hint}")
 
     if not output_path.exists():
         raise RuntimeError("Piper synthesis completed without creating an output file.")
 
     return output_path
+
+
+def list_supported_tts_languages(candidates: list[str] | None = None) -> list[str]:
+    """Return language codes that can be synthesized with the current Piper setup.
+
+    This is a best-effort probe intended for UI configuration.
+    """
+
+    probe = candidates or [
+        "en",
+        "es",
+        "fr",
+        "de",
+        "it",
+        "pt",
+        "ru",
+        "zh",
+        "ja",
+        "ko",
+        "ar",
+        "hi",
+        "nl",
+        "pl",
+        "tr",
+    ]
+
+    supported: list[str] = []
+    for code in probe:
+        try:
+            _resolve_voice_paths(_canonical_language(code))
+        except FileNotFoundError:
+            continue
+        supported.append(code)
+    return supported

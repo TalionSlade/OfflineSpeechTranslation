@@ -25,7 +25,21 @@ export const AudioRecorder = ({ onRecordingComplete, disabled }: AudioRecorderPr
   const startRecording = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const mediaRecorder = new MediaRecorder(stream);
+
+      const preferredTypes = [
+        'audio/webm;codecs=opus',
+        'audio/webm',
+        'audio/ogg;codecs=opus',
+        'audio/ogg',
+      ];
+
+      const options: MediaRecorderOptions = {};
+      const supportedType = preferredTypes.find((t) => MediaRecorder.isTypeSupported(t));
+      if (supportedType) {
+        options.mimeType = supportedType;
+      }
+
+      const mediaRecorder = new MediaRecorder(stream, options);
       mediaRecorderRef.current = mediaRecorder;
       audioChunksRef.current = [];
 
@@ -36,10 +50,16 @@ export const AudioRecorder = ({ onRecordingComplete, disabled }: AudioRecorderPr
       };
 
       mediaRecorder.onstop = () => {
-        const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/wav' });
+        const mimeType = mediaRecorder.mimeType || supportedType || 'audio/webm';
+        const audioBlob = new Blob(audioChunksRef.current, { type: mimeType });
         const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-        const audioFile = new File([audioBlob], `recording-${timestamp}.wav`, {
-          type: 'audio/wav',
+
+        let extension = '.webm';
+        if (mimeType.includes('ogg')) extension = '.ogg';
+        if (mimeType.includes('wav')) extension = '.wav';
+
+        const audioFile = new File([audioBlob], `recording-${timestamp}${extension}`, {
+          type: mimeType,
         });
         onRecordingComplete(audioFile);
 

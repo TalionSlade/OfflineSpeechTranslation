@@ -2,11 +2,15 @@ const API_BASE_URL = 'http://localhost:8000';
 
 export const translateAudio = async (
   audioFile: File,
+  sourceLanguage: string,
+  targetLanguage: string,
   onProgress?: (progress: number) => void
 ): Promise<{ blob: Blob; processingTime: number }> => {
   const startTime = Date.now();
   const formData = new FormData();
   formData.append('file', audioFile);
+  formData.append('source_language', sourceLanguage);
+  formData.append('target_language', targetLanguage);
 
   try {
     const xhr = new XMLHttpRequest();
@@ -32,7 +36,27 @@ export const translateAudio = async (
           const blob = xhr.response;
           resolve({ blob, processingTime });
         } else {
-          reject(new Error(`Server error: ${xhr.status}`));
+          const responseBlob = xhr.response as Blob | null;
+          if (responseBlob && responseBlob.size > 0) {
+            const reader = new FileReader();
+            reader.onload = () => {
+              try {
+                const text = String(reader.result || '');
+                const parsed = JSON.parse(text) as { detail?: unknown };
+                const detail =
+                  typeof parsed.detail === 'string'
+                    ? parsed.detail
+                    : `Server error: ${xhr.status}`;
+                reject(new Error(detail));
+              } catch {
+                reject(new Error(`Server error: ${xhr.status}`));
+              }
+            };
+            reader.onerror = () => reject(new Error(`Server error: ${xhr.status}`));
+            reader.readAsText(responseBlob);
+          } else {
+            reject(new Error(`Server error: ${xhr.status}`));
+          }
         }
       });
 
@@ -58,8 +82,16 @@ export const translateAudio = async (
 
 export const validateAudioFile = (file: File): { valid: boolean; error?: string } => {
   const maxSize = 50 * 1024 * 1024;
-  const allowedFormats = ['audio/wav', 'audio/mpeg', 'audio/mp4', 'audio/x-m4a', 'audio/flac'];
-  const allowedExtensions = ['.wav', '.mp3', '.m4a', '.flac'];
+  const allowedFormats = [
+    'audio/wav',
+    'audio/mpeg',
+    'audio/mp4',
+    'audio/x-m4a',
+    'audio/flac',
+    'audio/webm',
+    'audio/ogg',
+  ];
+  const allowedExtensions = ['.wav', '.mp3', '.m4a', '.flac', '.webm', '.ogg'];
 
   if (file.size > maxSize) {
     return { valid: false, error: 'File size exceeds 50MB limit' };
@@ -71,7 +103,7 @@ export const validateAudioFile = (file: File): { valid: boolean; error?: string 
   );
 
   if (!hasValidType && !hasValidExtension) {
-    return { valid: false, error: 'Unsupported file format. Please use WAV, MP3, M4A, or FLAC' };
+    return { valid: false, error: 'Unsupported file format. Please use WAV, MP3, M4A, FLAC, WebM, or OGG' };
   }
 
   return { valid: true };
