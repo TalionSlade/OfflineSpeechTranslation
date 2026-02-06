@@ -1,0 +1,317 @@
+Perfect! Here's the updated prompt with all 5 views included:
+
+---
+
+**UPDATED PROMPT FOR YOUR ENTERPRISE CO-PILOT:**
+
+I need you to create a React component for an interactive "AI Bank of the Future" technology stack visualization with **5 different views**. I already have a baseline template - please integrate this visualization into my existing React codebase.
+
+**COMPONENT REQUIREMENTS:**
+
+Create a React component called `AIBankStack` with the following features:
+
+1. **State Management:**
+   - Track current view: 'engagement', 'decision-making', 'all-together', 'operating-model', or 'core-technology'
+   - Use React hooks (useState) for view toggling
+
+2. **Component Structure:**
+   - Main container with title
+   - Left panel for explanatory text (changes based on view)
+   - Right panel with the pyramid/stack diagram
+   - View selector buttons or tabs (5 total)
+
+3. **Styling Approach:**
+   - Use CSS modules, styled-components, or Tailwind (match my existing approach)
+   - Color scheme: 
+     - Cyan/turquoise (#00D9FF or similar) for new AI elements
+     - Gray (#A0A0A0, #D0D0D0) for traditional elements
+     - Blue (#0066FF or similar) for emphasis/highlighting
+     - Dark blue (#1E3A8A or similar) for deep blue highlights
+     - Dark background for pyramid peak (#1A1A1A)
+
+**DATA STRUCTURE:**
+
+Organize the content as follows:
+
+```javascript
+const viewContent = {
+  engagement: {
+    title: "Engagement layer",
+    description: "Banks will need to reimagine how they engage with customers, making their experiences as intelligent, personalized, and frictionless as possible through the use of AI. Leading banks' customers are experiencing human-like conversational interactions with AI via text and voice chats and are moving seamlessly across channels such as mobile apps, websites, branches, and contact centers, thanks to powerful AI capabilities.",
+    highlights: {
+      cyan: ['multimodal', 'digital-twins'],
+      blue: [],
+      darkBlue: []
+    }
+  },
+  decisionMaking: {
+    title: "AI-powered decision-making layer",
+    description: "The brain of the bank, this layer makes and orchestrates decisions. Historically, banks have focused on deploying traditional analytics modules such as models, but as AI technologies mature, this layer has expanded to include agent and AI orchestration sublayers working in unison with the traditional analytics layer to drive superior outcomes.",
+    highlights: {
+      cyan: ['ai-orchestration', 'ai-agents', 'ai-enablers', 'digital-twins'],
+      blue: [],
+      darkBlue: []
+    }
+  },
+  allTogether: {
+    title: "All together now",
+    description: "Elements across the four layers of the AI bank stack work together to enable transformative change and deliver value for the enterprise.",
+    highlights: {
+      cyan: ['multimodal', 'digital-twins', 'ai-orchestration', 'ai-agents', 'ai-enablers'],
+      blue: ['obs-stack', 'ml-ops', 'finops', 'llm-orch', 'llm-gateway', 'security', 'search-retrieval', 'data-prep', 'vector-db', 'data-post'],
+      darkBlue: ['autonomous-teams', 'ai-control']
+    }
+  },
+  operatingModel: {
+    title: "Operating model",
+    description: "By integrating business and technology in platforms run by cross-functional teams, banks can break up organizational silos, boost agility and speed, and better align goals and priorities across the enterprise. An AI control tower tracks the value realized from AI initiatives, among other tasks.",
+    highlights: {
+      cyan: [],
+      blue: [],
+      darkBlue: ['autonomous-teams', 'ai-control']
+    }
+  },
+  coreTechnology: {
+    title: "Core technology and data layer",
+    description: "This layer includes the technology and data needed for an AI transformation, including reusable tools and pipelines equipped with machine learning operations capabilities needed to run large language models (LLMs) at scale. Other portions of this layer include the data needed to train multiagent systems, as well as modern application programming interface (API) architecture and robust cybersecurity.",
+    highlights: {
+      cyan: [],
+      blue: ['obs-stack', 'ml-ops', 'finops', 'llm-orch', 'llm-gateway', 'security', 'search-retrieval', 'data-prep', 'vector-db', 'data-post'],
+      darkBlue: []
+    }
+  }
+}
+```
+
+**COMPLETE LAYER STRUCTURE (5 layers from top to bottom):**
+
+**Layer 1 - Engagement:**
+```javascript
+{
+  name: "Engagement",
+  rows: [
+    {
+      type: "dual-bar",
+      items: [
+        { text: "Delighting customers through personalized experiences", baseColor: "gray" },
+        { text: "Empowering employees to serve customers better", baseColor: "gray" }
+      ]
+    },
+    {
+      type: "single-bar",
+      items: [
+        { text: "Mobile as the gateway to the rest of the bank, including branches, contact center, relationship managers", baseColor: "gray" }
+      ]
+    },
+    {
+      type: "three-column",
+      items: [
+        { text: "Multimodal conversational experiences (text, visual, voice)", baseColor: "gray", id: "multimodal" },
+        { text: "Intelligent products and services", baseColor: "gray" },
+        { text: "Omnichannel experiences for customers, employees and partners", baseColor: "gray" }
+      ]
+    },
+    {
+      type: "single-bar",
+      items: [
+        { text: "Use of digital twins to simulate behavior of customers and employees", baseColor: "gray", id: "digital-twins" }
+      ]
+    }
+  ]
+}
+```
+
+**Layer 2 - AI-powered decision making:**
+```javascript
+{
+  name: "AI-powered decision making",
+  rows: [
+    {
+      type: "single-bar",
+      items: [
+        { text: "AI orchestration (including copilots and autopilots that organize workflows)", baseColor: "gray", id: "ai-orchestration" }
+      ]
+    },
+    {
+      type: "agent-grid",
+      label: "AI agents (AI that specializes in narrow domains)",
+      items: [
+        { text: "Risk policy expert", size: "medium" },
+        { text: "recognition", size: "small" },
+        { text: "Property collateral analyzer", size: "medium" },
+        { text: "summarizer", size: "small" },
+        { text: "Fraud pattern detector", size: "medium" },
+        { text: "detector", size: "small" },
+        { text: "Enterprise knowledge search", size: "medium" },
+        { text: "Skills coach", size: "small" },
+        { text: "Test case generator", size: "medium" },
+        { text: "Ad-banner", size: "small" },
+        { text: "Legal AI", size: "small" },
+        { text: "Spend", size: "small" },
+        { text: "Tax expert", size: "small" }
+      ],
+      baseColor: "gray",
+      id: "ai-agents"
+    },
+    {
+      type: "multi-column",
+      label: "Predictive analytics models",
+      items: [
+        { text: "Customer acquisition" },
+        { text: "Credit decision making" },
+        { text: "Monitoring and collections" },
+        { text: "Retention, selling, upselling" },
+        { text: "Servicing and engagement" }
+      ],
+      baseColor: "gray"
+    },
+    {
+      type: "multi-column",
+      label: "AI enablers",
+      items: [
+        { text: "Reusable components and services" },
+        { text: "Information security standards and controls" },
+        { text: "Streamlined risk protocols" }
+      ],
+      baseColor: "gray",
+      id: "ai-enablers"
+    }
+  ]
+}
+```
+
+**Layer 3 - Core technology and data:**
+```javascript
+{
+  name: "Core technology and data",
+  rows: [
+    {
+      type: "multi-column",
+      label: "Industrial AI and machine learning",
+      items: [
+        { text: "Observability tool stack", baseColor: "gray", id: "obs-stack" },
+        { text: "Machine learning operations", baseColor: "gray", id: "ml-ops" },
+        { text: "FinOps¹", baseColor: "gray", id: "finops" },
+        { text: "LLM² orchestration", baseColor: "gray", id: "llm-orch" },
+        { text: "LLM gateway", baseColor: "gray", id: "llm-gateway" },
+        { text: "Security", baseColor: "gray", id: "security" }
+      ]
+    },
+    {
+      type: "data-section",
+      label: "Enterprise data",
+      mainBar: { text: "Search and retrieval engine", baseColor: "gray", id: "search-retrieval" },
+      items: [
+        { text: "Data ingestion", baseColor: "gray" },
+        { text: "Data preprocessing", baseColor: "gray", id: "data-prep" },
+        { text: "Vector databases", baseColor: "gray", id: "vector-db" },
+        { text: "Data postprocessing", baseColor: "gray", id: "data-post" },
+        { text: "Structured data storage", baseColor: "gray" }
+      ]
+    }
+  ]
+}
+```
+
+**Layer 4 - Technology and infrastructure:**
+```javascript
+{
+  name: "Technology and infrastructure",
+  rows: [
+    {
+      type: "single-bar",
+      items: [
+        { text: "Tech-forward strategy (in-house capabilities vs buying offerings; in-house talent plan)", baseColor: "gray" }
+      ]
+    },
+    {
+      type: "multi-column",
+      items: [
+        { text: "Modern API architecture" },
+        { text: "Intelligent infrastructure (AI operations command, hybrid cloud setup, etc)" },
+        { text: "Cybersecurity and control tiers" },
+        { text: "Core modernization" }
+      ],
+      baseColor: "gray"
+    }
+  ]
+}
+```
+
+**Layer 5 - Operating model:**
+```javascript
+{
+  name: "Operating model",
+  rows: [
+    {
+      type: "single-bar",
+      label: "Platform operating model",
+      items: [
+        { text: "Autonomous business, technology, and data teams enabled by AI models and agents", baseColor: "gray", id: "autonomous-teams" }
+      ]
+    },
+    {
+      type: "multi-column",
+      items: [
+        { text: "Agile ways of working" },
+        { text: "AI control tower", baseColor: "gray", id: "ai-control" },
+        { text: "Modern talent strategy" },
+        { text: "Culture and capabilities" }
+      ],
+      baseColor: "gray"
+    },
+    {
+      type: "footer-bar",
+      items: [
+        { text: "Value capture office to monitor transformations", baseColor: "gray" }
+      ]
+    }
+  ]
+}
+```
+
+**HIGHLIGHTING LOGIC FOR ALL 5 VIEWS:**
+
+**View 1 - Engagement Layer:**
+- CYAN: `multimodal`, `digital-twins`
+- All other elements: GRAY
+
+**View 2 - AI-powered Decision Making:**
+- CYAN: `digital-twins`, `ai-orchestration`, `ai-agents` (entire section), `ai-enablers`
+- All other elements: GRAY
+
+**View 3 - All Together Now:**
+- CYAN: `multimodal`, `digital-twins`, `ai-orchestration`, `ai-agents` (entire section), `ai-enablers`
+- BLUE: `obs-stack`, `ml-ops`, `finops`, `llm-orch`, `llm-gateway`, `security`, `search-retrieval`, `data-prep`, `vector-db`, `data-post`
+- DARK BLUE: `autonomous-teams`, `ai-control`
+- All other elements: GRAY
+
+**View 4 - Operating Model:**
+- DARK BLUE: `autonomous-teams`, `ai-control`
+- All other elements: GRAY
+
+**View 5 - Core Technology and Data:**
+- BLUE: `obs-stack`, `ml-ops`, `finops`, `llm-orch`, `llm-gateway`, `security`, `search-retrieval`, `data-prep`, `vector-db`, `data-post`
+- All other elements: GRAY
+
+**ADDITIONAL REQUIREMENTS:**
+
+- Add footnotes at bottom: "¹Financial operations, a framework for managing the operational costs of cloud computing. ²Large language models."
+- Include a legend showing "New elements" with blue/cyan color indicator at top
+- Make the pyramid peak with "AI bank of the future" text in white on dark background
+- Add smooth CSS transitions (0.3s-0.5s) when colors change between views
+- Create 5 navigation buttons/tabs clearly showing: "Engagement", "AI Decision Making", "All Together", "Operating Model", "Core Technology"
+- Highlight the active view button
+- Ensure responsive design (stack vertically on mobile, left panel above diagram)
+- Use semantic HTML and accessibility best practices (ARIA labels, keyboard navigation)
+- Make all text readable with proper contrast ratios
+- Ensure the pyramid/stack maintains visual hierarchy (narrower at top, wider at bottom)
+
+**OUTPUT:**
+Please provide the complete React component code that I can integrate into my existing application, including:
+1. Main component file (AIBankStack.jsx or .tsx)
+2. All necessary styling (CSS/SCSS module or styled-components)
+3. Any helper functions or constants
+4. PropTypes or TypeScript interfaces if applicable
+
+The component should be production-ready and follow React best practices.
